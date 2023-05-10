@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -15,8 +16,9 @@ public class RandomFire : MonoBehaviour
     public int chance;
     public bool simRun = false;
     public bool onFire;
-    public int probability = 15;
+    public int probability = 10;
     public int score = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,36 +28,40 @@ public class RandomFire : MonoBehaviour
         health = Random.Range(5, 10);
         onFire = false;
 
+
         InvokeRepeating("Update", 0f, 5f);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         if (simRun == false && health > 0)
         {
             StartCoroutine(fireChance());
         }
 
-        if (health == 0)
+        if (health <= 0)
         {
             onFire = false;
             fire.SetActive(false);
             treeNotDead.SetActive(false);
-            score -= 300;
         }
-        //if health==1{
-        //  onFire = false,
-        // fire.SetActive(false);
-        // score += 300;
-        //}
+
+        //if health == 15
+        if (health >= 15)
+        {
+            onFire = false;
+            fire.SetActive(false);
+        }
     }
 
     IEnumerator fireChance()
     {
         simRun = true;
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         chance = Random.Range(0, 100);
         if (chance < probability && onFire == false)
         {
@@ -68,13 +74,7 @@ public class RandomFire : MonoBehaviour
         }
         simRun = false;
     }
+
 }
-
-//oncollision{
-//  health ++;
-//}
-
-
-
 
 
