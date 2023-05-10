@@ -16,6 +16,7 @@ public class RandomFire : MonoBehaviour
     public bool simRun = false;
     public bool onFire;
     public int probability = 25;
+    public int score = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -41,11 +42,12 @@ public class RandomFire : MonoBehaviour
             onFire = false;
             fire.SetActive(false);
             treeNotDead.SetActive(false);
+            score -= 300;
         }
         //if health==1{
         //  onFire = false,
         // fire.SetActive(false);
-        //
+        // score += 300;
         //}
     }
 
