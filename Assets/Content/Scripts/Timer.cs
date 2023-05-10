@@ -16,8 +16,12 @@ public class Timer : MonoBehaviour
     public bool takingAway = false;
     public int minutesLeft = 2;
 
+    public GameObject scoreMenu = new GameObject();
+ 
+
     void Start()
     {
+        scoreMenu.SetActive(false);
         textDisplay.text = "0:00";
     }
 
@@ -31,6 +35,7 @@ public class Timer : MonoBehaviour
         if (secondsLeft == 0 && minutesLeft == 0)
         {
             Time.timeScale = 0f;
+            scoreMenu.SetActive(true);
         }
     }
     IEnumerator TimerTake() 
