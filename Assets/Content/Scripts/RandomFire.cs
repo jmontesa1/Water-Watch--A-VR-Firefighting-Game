@@ -15,7 +15,7 @@ public class RandomFire : MonoBehaviour
     public int chance;
     public bool simRun = false;
     public bool onFire;
-    public int probability = 25;
+    public int probability = 15;
     public int score = 0;
 
     // Start is called before the first frame update
@@ -55,7 +55,7 @@ public class RandomFire : MonoBehaviour
     {
         simRun = true;
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         chance = Random.Range(0, 100);
         if (chance < probability && onFire == false)
         {
