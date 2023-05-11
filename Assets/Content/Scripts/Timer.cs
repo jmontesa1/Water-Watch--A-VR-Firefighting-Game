@@ -39,6 +39,7 @@ public class Timer : MonoBehaviour
             textDisplay.text = "0:00";
             done = true;
             scoreMenu.SetActive(true);
+            Time.timeScale = 0f;
         }
 
     }
