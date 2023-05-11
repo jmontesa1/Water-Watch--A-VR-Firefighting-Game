@@ -2034,8 +2034,8 @@ GameObject:
   - component: {fileID: 1002274099}
   - component: {fileID: 1002274103}
   - component: {fileID: 1002274102}
-  - component: {fileID: 1002274101}
   - component: {fileID: 1002274100}
+  - component: {fileID: 1002274101}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged

@@ -15,16 +15,16 @@ public class Timer : MonoBehaviour
     public int secondsLeft;
     public bool takingAway = false;
     public int minutesLeft;
-    public GameObject scoreMenu = new GameObject();
+    public GameObject scoreMenu;
     public float timeStart;
     public bool done;
 
     void Start()
     {
-        scoreMenu.SetActive(false);
         textDisplay.text = "0:00";
         StartCoroutine(wait());
         done = false;
+        scoreMenu.SetActive(false);
     }
 
     void Update()
