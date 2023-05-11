@@ -12,29 +12,32 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     public TextMeshProUGUI textDisplay;
-    public int secondsLeft = 15;
+    public int secondsLeft;
     public bool takingAway = false;
-    public int minutesLeft = 2;
-    public bool gameDone = false;
+    public int minutesLeft;
     public GameObject scoreMenu = new GameObject();
- 
+    public float timeStart;
+    public bool done;
 
     void Start()
     {
         scoreMenu.SetActive(false);
         textDisplay.text = "0:00";
+        StartCoroutine(wait());
+        done = false;
     }
 
     void Update()
     {
-        if (takingAway == false && secondsLeft >= 0 && gameDone == false)
+        if (takingAway == false && secondsLeft >= 0 && done == false)
         {
             StartCoroutine(TimerTake());
         }
 
-        if (secondsLeft == 0 && minutesLeft == 0)
+        if (secondsLeft <= 0 && minutesLeft <= 0)
         {
-            gameDone = true;
+            textDisplay.text = "0:00";
+            done = true;
             scoreMenu.SetActive(true);
         }
 
@@ -61,6 +64,11 @@ public class Timer : MonoBehaviour
         }
         takingAway = false;
 
+    }
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(timeStart);
     }
 
 }

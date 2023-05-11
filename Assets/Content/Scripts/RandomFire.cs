@@ -6,7 +6,10 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
+using Debug = UnityEngine.Debug;
 using TMPro;
+using System.Diagnostics;
+using System.Threading;
 
 //Created by John Montesa
 public class RandomFire : MonoBehaviour
@@ -21,23 +24,24 @@ public class RandomFire : MonoBehaviour
     public static int score;
     public TextMeshProUGUI pointsDisplay;
     public TextMeshProUGUI final;
-
+    //public Timer timer;
 
     // Start is called before the first frame update
     void Start()
     {
+        chance = Random.Range(1, 100);
         fire.SetActive(false);
         treeNotDead.SetActive(true);
         health = Random.Range(5, 10);
         onFire = false;
         score = 0;
+        Debug.Log("Start methdo random fire");
     }
 
     // Update is called once per frame
     void Update()
     {
         pointsDisplay.text = "" + score;
-        final.text = "yooo" + score;
 
         if (simRun == false && health > 0)
         {
@@ -53,6 +57,11 @@ public class RandomFire : MonoBehaviour
             this.enabled = false;
         }
 
+        /*if (timer.done == true)
+        {
+            StartCoroutine(endgame());
+        }*/
+
         //if health == 15
         if (health >= 15)
         {
@@ -62,15 +71,15 @@ public class RandomFire : MonoBehaviour
             health = Random.Range(5, 10);
 
         }
-
-    }
+        final.text = "" + score;
+        }
 
     IEnumerator fireChance()
     {
         simRun = true;
 
         yield return new WaitForSeconds(3);
-        chance = Random.Range(0, 100);
+        chance = Random.Range(1, 100);
         if (chance < probability && onFire == false)
         {
             fire.SetActive(true);
@@ -92,6 +101,13 @@ public class RandomFire : MonoBehaviour
     {
         score -= 300;
     }
+
+    /*IEnumerator endgame()
+    {
+        //simRun = true;
+        //yield return new WaitForSeconds(300);
+        //simRun = false;
+    }*/
 
 }
 
