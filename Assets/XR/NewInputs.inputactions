@@ -1,0 +1,34 @@
+{
+    "name": "NewInputs",
+    "maps": [
+        {
+            "name": "Menuuu",
+            "id": "6a9d71b3-b422-474f-b975-ad6f1f47a94a",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "83189aae-c93c-4717-83db-2258780dd16d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f51d4c90-d42f-40b8-911f-6aa237012ba8",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

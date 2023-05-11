@@ -23,13 +23,13 @@ public class WaterCollision : MonoBehaviour
         // Get the Waterbend component attached to the collided object
         Waterbend otherWater = other.GetComponent<Waterbend>();
         Debug.Log("Trigger entered");
-        if (otherWater == null)
+        if (otherWater == null && randomFire.onFire == true)
         {
             // Increase the health of the tree
             randomFire.health += 1;
             Debug.Log("Health Increased!");
 
-            // Check if the tree has reached 15 hp, and turn off the fire if it has
+            /* Check if the tree has reached 15 hp, and turn off the fire if it has
             if (randomFire.health >= 15)
             {
                 randomFire.score += 300;
@@ -39,7 +39,7 @@ public class WaterCollision : MonoBehaviour
             if (randomFire.health <= 0)
             {
                 randomFire.score -= 300;
-            }
+            }*/
 
             // Destroy the water object
             Destroy(other.gameObject);

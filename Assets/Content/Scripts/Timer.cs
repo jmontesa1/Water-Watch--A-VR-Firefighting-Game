@@ -15,7 +15,7 @@ public class Timer : MonoBehaviour
     public int secondsLeft = 15;
     public bool takingAway = false;
     public int minutesLeft = 2;
-
+    public bool gameDone = false;
     public GameObject scoreMenu = new GameObject();
  
 
@@ -27,16 +27,17 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        if (takingAway == false && secondsLeft >= 0)
+        if (takingAway == false && secondsLeft >= 0 && gameDone == false)
         {
             StartCoroutine(TimerTake());
         }
 
         if (secondsLeft == 0 && minutesLeft == 0)
         {
-            Time.timeScale = 0f;
+            gameDone = true;
             scoreMenu.SetActive(true);
         }
+
     }
     IEnumerator TimerTake() 
     {
@@ -59,6 +60,7 @@ public class Timer : MonoBehaviour
             textDisplay.text = minutesLeft + ":" + secondsLeft;
         }
         takingAway = false;
+
     }
 
 }
